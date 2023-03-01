@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>jquery 101</title>
+    <style media="screen">
+
+      body{
+        background-color:#F16767;
+      }
+      h1 {
+        text-align:center;
+        text-decoration:underline;
+        font-family:sans-serif;
+      }
+      button{
+        display:block;
+        margin:auto;
+        background-color: #4D455D; /* Green */
+ border: none;
+ color: white;
+ padding: 15px 32px;
+ <!-- text-align: center; -->
+ text-decoration: none;
+ <!-- display: inline-block; -->
+ font-size: 16px;
+      }
+     img{
+       width:200px;
+       height:auto;
+       box-shadow:10px 10px 5px #000000;
+       display:block;
+       margin:auto;
+     }
+     button {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+    </style>
+  </head>
+  <body>
+
+
+    <button type="button" name="button">Generate character</button>
+    <h1 class="name"></h1>
+    <img src="" class="character-img" alt="">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" charset="utf-8"></script>
+
+    <script>
+      $(document).ready(function()
+      {
+        $("button").on("click",function() {
+          const randomNumber= Math.ceil(Math.random()*88)
+          $.get('https://akabab.github.io/starwars-api/api/id/'+randomNumber+'.json',function(data){
+              console.log(data)
+              $("h1.name").text(data['name'])
+              $(".character-img").attr('src',data['image'])
+
+          })
+        })
+      })
+
+
+    </script>
+
+  </body>
+</html>
